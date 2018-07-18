@@ -6,7 +6,7 @@ var Background = (function(){
 
     //cache DOM
     function cacheDom(){
-        DOM.$background = $(#background);   
+        DOM.$background = $('#background');   
     }
 
     //async image loading and rendering
@@ -20,10 +20,44 @@ var Background = (function(){
     }
 
 
-    function buildElement(){
-        
+    function buildElement(source){
+        var deferred = $.Deferred(function(task){      //jquery deferred object creation
+            var image = new Image();
+
+            image.onload = function(){
+                task.resolve(image);
+            }
+
+            image.onerror = function(){
+                task.reject();
+            }
+
+            image.src = source;
+
+        });
+
+
+        return deferred.promise();  
     }
 
 
 
-}())
+    function render(image){
+        DOM.$background
+            .append(image)
+            .css('opacity',1);
+    }
+
+
+    //===========puvlic init method=========================//
+
+    function init(){
+        cacheDom();
+        loadImage();
+    }
+
+    //==================exporting public method===================//
+    return {
+        init: init
+    };
+}());
