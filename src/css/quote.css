@@ -1,0 +1,30 @@
+#quote {
+    font-size: 1.5em;
+    padding: .5em 1em;
+    width: 80%;
+    max-width: 720px;
+    border-radius: 8px;
+    text-shadow: 0 0 40px #000;
+}
+
+
+#quote > a {
+    color: #fff;
+    text-align: justify;
+    text-decoration: none;
+}
+
+
+#quote > a:hover {
+    color: #f33;
+}
+
+#quote p {
+    padding: .25em 0;
+    margin: 0;
+}
+
+#quote > p {
+    font-style: italic;
+    text-align: right
+}
